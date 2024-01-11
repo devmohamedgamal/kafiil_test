@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomTextFormField extends StatelessWidget {
+import 'styles.dart';
+
+class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     super.key,
     required this.hint,
@@ -11,8 +13,8 @@ class CustomTextFormField extends StatelessWidget {
     this.keyboardType,
     this.validator,
     this.onFieldSubmitted,
-    this.showPassword = false,
     this.maxLines = 1,
+    this.backgroundColor = Colors.white,
   });
   final String hint;
   final TextEditingController? controller;
@@ -21,44 +23,88 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
   final void Function(String)? onFieldSubmitted;
-  final bool showPassword;
   final int maxLines;
+  final Color backgroundColor;
+
+  @override
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
+
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  bool showPassword = false;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      obscureText: showPassword,
-      focusNode: focusNode,
-      textInputAction: textInputAction,
-      keyboardType: keyboardType,
-      validator: validator,
-      onFieldSubmitted: onFieldSubmitted,
-      maxLines: maxLines,
-      decoration: InputDecoration(
-        fillColor: Colors.white,
-        filled: true,
-        border: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.blue),
-          borderRadius: BorderRadius.circular(16.r),
-        ),
-        contentPadding: const EdgeInsets.all(17),
-        errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            width: 1,
-            color: Theme.of(context).colorScheme.error,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 5),
+          child: Text(
+            widget.hint,
+            style: Styles.style12,
           ),
-          borderRadius: BorderRadius.circular(30.sp),
         ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            width: 1,
-            color: Theme.of(context).colorScheme.error,
+        SizedBox(
+          height: 8.h,
+        ),
+        TextFormField(
+          controller: widget.controller,
+          obscureText: showPassword,
+          focusNode: widget.focusNode,
+          textInputAction: widget.textInputAction,
+          keyboardType: widget.keyboardType,
+          validator: widget.validator,
+          onFieldSubmitted: widget.onFieldSubmitted,
+          maxLines: widget.maxLines,
+          decoration: InputDecoration(
+            fillColor: widget.backgroundColor,
+            filled: true,
+            border: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.blue),
+              borderRadius: BorderRadius.circular(21.r),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.transparent),
+              borderRadius: BorderRadius.circular(21.r),
+            ),
+            contentPadding: const EdgeInsets.all(17),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                width: 1,
+                color: Theme.of(context).colorScheme.error,
+              ),
+              borderRadius: BorderRadius.circular(30.sp),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                width: 1,
+                color: Theme.of(context).colorScheme.error,
+              ),
+              borderRadius: BorderRadius.circular(30),
+            ),
+            suffixIcon: widget.hint.contains('Password')
+                ? IconButton(
+                    onPressed: () {
+                      if (showPassword) {
+                        setState(() {
+                          showPassword = false;
+                        });
+                      } else {
+                        setState(() {
+                          showPassword = true;
+                        });
+                      }
+                    },
+                    icon: Icon(
+                      showPassword ? Icons.visibility_off : Icons.visibility,
+                      color: Colors.grey,
+                    ),
+                  )
+                : null,
           ),
-          borderRadius: BorderRadius.circular(30),
         ),
-        hintText: hint,
-      ),
+      ],
     );
   }
 }

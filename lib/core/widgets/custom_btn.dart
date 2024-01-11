@@ -13,7 +13,7 @@ class CustomBtn extends StatelessWidget {
     this.textColor = Colors.white,
     required this.width,
     required this.height,
-    this.radius = 30,
+    this.radius = 10,
     this.textSize,
   });
   final void Function()? onTap;
