@@ -64,23 +64,26 @@ class LoginViewBody extends StatelessWidget {
           SizedBox(
             height: 24.h,
           ),
-          Text.rich(
-            TextSpan(
-              children: [
-                TextSpan(
-                  text: 'Don’t have an account ? ',
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Don’t have an account ? ',
+                style: Styles.style14.copyWith(
+                  color: const Color(0xFF696F79),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: Text(
+                  'Register',
                   style: Styles.style14.copyWith(
-                    color: const Color(0xFF696F79),
+                    color: AppConstants.kPrimaryColor,
                   ),
                 ),
-                TextSpan(
-                  text: 'Register',
-                  style: Styles.style14
-                      .copyWith(color: AppConstants.kPrimaryColor),
-                ),
-              ],
-            ),
-          )
+              ),
+            ],
+          ),
         ],
       ),
     );
