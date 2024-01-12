@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'constants.dart';
 import 'styles.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -14,7 +15,7 @@ class CustomTextFormField extends StatefulWidget {
     this.validator,
     this.onFieldSubmitted,
     this.maxLines = 1,
-    this.backgroundColor = Colors.white,
+    this.backgroundColor = AppConstants.kTextFieldColor,
   });
   final String hint;
   final TextEditingController? controller;
@@ -31,7 +32,7 @@ class CustomTextFormField extends StatefulWidget {
 }
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
-  bool showPassword = false;
+  bool showPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
         TextFormField(
           controller: widget.controller,
-          obscureText: showPassword,
+          obscureText: widget.hint.contains('Password') ? showPassword : false,
           focusNode: widget.focusNode,
           textInputAction: widget.textInputAction,
           keyboardType: widget.keyboardType,

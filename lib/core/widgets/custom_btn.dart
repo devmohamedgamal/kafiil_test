@@ -1,7 +1,7 @@
 import 'package:flutter/Material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'subtitle_text.dart';
+import '../utils/styles.dart';
 
 class CustomBtn extends StatelessWidget {
   const CustomBtn({
@@ -35,21 +35,18 @@ class CustomBtn extends StatelessWidget {
             color: backgroundColor,
             borderRadius: BorderRadius.circular(radius)),
         child: Center(
-          child: isLoading
-              ? SizedBox(
-                  height: 27.h,
-                  width: 27.w,
-                  child: const CircularProgressIndicator(
-                    color: Colors.black,
-                  ),
-                )
-              : SubTitleTextWidget(
-                  lebal: text,
-                  fontSize: textSize ?? 18.sp,
-                  fontWeight: FontWeight.w500,
-                  color: textColor,
-                ),
-        ),
+            child: isLoading
+                ? SizedBox(
+                    height: 27.h,
+                    width: 27.w,
+                    child: const CircularProgressIndicator(
+                      color: Colors.black,
+                    ),
+                  )
+                : Text(
+                    text,
+                    style: Styles.style18.copyWith(color: Colors.white),
+                  )),
       ),
     );
   }
@@ -103,11 +100,9 @@ class CustomIconBtn extends StatelessWidget {
                 : Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SubTitleTextWidget(
-                        lebal: text,
-                        fontSize: textSize ?? 18.sp,
-                        fontWeight: FontWeight.w500,
-                        color: textColor,
+                      Text(
+                        text,
+                        style: Styles.style18,
                       ),
                       SizedBox(
                         width: 8.w,
