@@ -73,10 +73,14 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Row(
+                Row(
                   children: [
-                    Icon(Icons.arrow_back_ios),
-                    Text(
+                    IconButton(
+                        onPressed: () {
+                          context.pop();
+                        },
+                        icon: const Icon(Icons.arrow_back_ios)),
+                    const Text(
                       'Register',
                       style: Styles.style18,
                     ),
@@ -89,7 +93,9 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 SizedBox(
                   height: 50.h,
                 ),
-                const LoadingRegisterWidget(),
+                const LoadingRegisterWidget(
+                  complete: 1,
+                ),
                 SizedBox(
                   height: 50.h,
                 ),
@@ -185,11 +191,11 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     backgroundColor: AppConstants.kPrimaryColor,
                     onTap: () {
                       var isValid = formKey.currentState!.validate();
-                      if (isValid) {
+                      if (!isValid) {
                         setState(() {
                           isError = false;
                         });
-                        context.push(AppRouter.kHomeView);
+                        context.push(AppRouter.kCompleteRegisterView);
                       } else {
                         setState(() {
                           isError = true;

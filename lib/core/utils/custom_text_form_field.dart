@@ -15,7 +15,7 @@ class CustomTextFormField extends StatefulWidget {
     this.validator,
     this.onFieldSubmitted,
     this.maxLines = 1,
-    this.backgroundColor = AppConstants.kTextFieldColor,
+    this.backgroundColor = AppConstants.kTextFieldColor, this.suffixIcon,
   });
   final String hint;
   final TextEditingController? controller;
@@ -26,6 +26,7 @@ class CustomTextFormField extends StatefulWidget {
   final void Function(String)? onFieldSubmitted;
   final int maxLines;
   final Color backgroundColor;
+  final Widget? suffixIcon;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -102,7 +103,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                       color: Colors.grey,
                     ),
                   )
-                : null,
+                : widget.suffixIcon,
           ),
         ),
       ],
