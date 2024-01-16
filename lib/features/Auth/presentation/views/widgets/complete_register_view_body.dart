@@ -12,6 +12,7 @@ import 'ginder_widget.dart';
 import 'loading_regsiter_widet.dart';
 import 'profile_circel_vatar.dart';
 import 'register_error_message.dart';
+import 'skills_widget.dart';
 
 class CompleteRegisterViewBody extends StatefulWidget {
   const CompleteRegisterViewBody({super.key});
@@ -152,79 +153,6 @@ class _CompleteRegisterViewBodyState extends State<CompleteRegisterViewBody> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class SkillsWidget extends StatefulWidget {
-  const SkillsWidget({super.key});
-
-  @override
-  State<SkillsWidget> createState() => _SkillsWidgetState();
-}
-
-class _SkillsWidgetState extends State<SkillsWidget> {
-  List<bool> choicesChipsItems = [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ];
-
-  List<String> choicesChips = [
-    'Video Production',
-    'Full Stack',
-    'Flutter',
-    'Graphic Design',
-    'Front end',
-    'Backend',
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Skills',
-          style: Styles.style12,
-        ),
-        SizedBox(
-          height: 10.h,
-        ),
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: AppConstants.kTextFieldColor,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Wrap(
-            children: List.generate(
-              choicesChips.length,
-              (i) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 6),
-                child: FilterChip(
-                  label: Text(choicesChips[i]),
-                  labelStyle: const TextStyle(
-                    color: AppConstants.kPrimaryColor,
-                  ),
-                  selectedColor: const Color(0xFFE9F9F1),
-                  onSelected: (t) {
-                    setState(() {
-                      choicesChipsItems[i] = !choicesChipsItems[i];
-                    });
-                  },
-                  selected: choicesChipsItems[i],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
