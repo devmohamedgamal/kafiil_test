@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mohamed_gamal_sabri/core/utils/constants.dart';
-import 'package:mohamed_gamal_sabri/features/Auth/presentation/views/login_view.dart';
-import 'package:mohamed_gamal_sabri/features/Auth/presentation/views/register_view.dart';
 import 'package:mohamed_gamal_sabri/features/home/presentation/views/countries_view.dart';
-import 'package:mohamed_gamal_sabri/features/home/presentation/views/home_view.dart';
 import 'package:mohamed_gamal_sabri/features/home/presentation/views/services_view.dart';
+import 'package:mohamed_gamal_sabri/features/home/presentation/views/who_am_i_view.dart';
 
 class RootView extends StatefulWidget {
   const RootView({super.key});
@@ -48,7 +46,7 @@ class _RootViewState extends State<RootView> {
         child: PageView(
           controller: pageController,
           children: const <Widget>[
-            HomeView(),
+            WhoAmIView(),
             CountriesView(),
             ServicesView(),
           ],
