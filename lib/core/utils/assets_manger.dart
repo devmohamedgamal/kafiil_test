@@ -7,4 +7,8 @@ class AssetsManger {
   static const String backIcon = 'assets/images/back.svg';
   static const String nextIcon = 'assets/images/Next.svg';
   static const String lastIcon = 'assets/images/Last.svg';
+  static const String productImage = 'assets/images/Product.png';
+  static const String shopingCartIcon = 'assets/images/shoping_cart.svg';
+
+
 }

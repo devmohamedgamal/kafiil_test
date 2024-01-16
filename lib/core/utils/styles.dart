@@ -14,7 +14,6 @@ abstract class Styles {
     fontSize: 12,
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w500,
-    height: 0.09,
   );
 
   static const TextStyle style14 = TextStyle(
@@ -45,7 +44,7 @@ abstract class Styles {
     fontSize: 11,
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w500,
-    height: 0.14,
-    letterSpacing: 0.22,
+    // height: 0.14,
+    // letterSpacing: 0.22,
   );
 }

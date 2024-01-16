@@ -4,6 +4,7 @@ import 'package:mohamed_gamal_sabri/features/Auth/presentation/views/login_view.
 import 'package:mohamed_gamal_sabri/features/Auth/presentation/views/register_view.dart';
 import 'package:mohamed_gamal_sabri/features/home/presentation/views/countries_view.dart';
 import 'package:mohamed_gamal_sabri/features/home/presentation/views/root_view.dart';
+import 'package:mohamed_gamal_sabri/features/home/presentation/views/services_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 
 abstract class AppRouter {
@@ -11,6 +12,7 @@ abstract class AppRouter {
   static const String kRegisterView = '/RegisterView';
   static const String kLoginView = '/LoginView';
   static const String kCountriesView = '/CountriesView';
+  static const String kServicesView = '/ServicesView';
   static const String kCompleteRegisterView = '/CompleteRegisterView';
   static final router = GoRouter(
     routes: [
@@ -30,13 +32,17 @@ abstract class AppRouter {
         path: kCompleteRegisterView,
         builder: (context, state) => const CompleteRegisterView(),
       ),
-       GoRoute(
+      GoRoute(
         path: '/',
         builder: (context, state) => const RootView(),
       ),
-       GoRoute(
+      GoRoute(
         path: kCountriesView,
         builder: (context, state) => const CountriesView(),
+      ),
+      GoRoute(
+        path: kServicesView,
+        builder: (context, state) => const ServicesView(),
       ),
     ],
   );
